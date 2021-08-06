@@ -33,6 +33,6 @@ jobs:
           vars=""
           for env in "${{toJSON(env)}}" 
           do 
-            vars+="$env" 
+            vars+="_$env" 
           done
-          echo $vars
+          echo "hello, $vars"
