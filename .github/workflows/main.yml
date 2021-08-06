@@ -30,7 +30,7 @@ jobs:
 
       - name: Echo Envs
         run: |
-          vars="${{toJSON(env)}}"
+          vars=${{toJSON(env)}}
           echo $vars | jq '.[]'
           echo "test $vars"
 #          for var in $($vars
