@@ -30,8 +30,5 @@ jobs:
 
       - name: Echo Envs
         run: |
-          for env in "${{toJSON(env)}}" 
-          do 
-            echo "hello"
-            echo "$env" 
-          done
+          keys=${{toJSON(env)}}
+          echo $keys
