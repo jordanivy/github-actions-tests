@@ -30,7 +30,7 @@ jobs:
 
       - name: Echo Envs
         run: |
-          echo "test ${{ env }}"
+          echo "${{ env }}" | jq keys
 #          for e in $env
 #          do
 #            echo "test $e"
