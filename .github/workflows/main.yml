@@ -39,4 +39,4 @@ jobs:
               echo "_$name=$value"
             fi
           done)
-          echo $jim_var_list
+          eval echo $jim_var_list
