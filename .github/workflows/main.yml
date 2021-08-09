@@ -30,15 +30,24 @@ jobs:
 
       - name: Echo Envs
         run: |
+          stringList=""
           env | while IFS= read -r line; do
             name=${line%%=*}
             if [[ $name == JIM* ]] 
             then
+              stringList+="_$name=${line#*=}"
               value=${line#*=}
               echo "V: $value"
               echo "N: $name"
             fi
+            if [[ $name == JOR* ]]
+            then
+              stringList+="_$name=${line#*=}"
+              value=${line#*=}
+              echo "V: $value"
+              echo "N: $name"
           done
+          echo $stringList
 #          for e in $env
 #          do
 #            echo "test $e"
