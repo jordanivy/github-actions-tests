@@ -39,7 +39,7 @@ jobs:
               jim_var_list+="_${name} = ${value}"
               echo "V: $value"
               echo "N: $name"
-              echo "why isn't $jim_var_list working"
             fi
           done
-          echo "$jim_var_list"
+          
+          echo "test"
