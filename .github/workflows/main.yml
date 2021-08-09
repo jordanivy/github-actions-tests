@@ -36,9 +36,9 @@ jobs:
             if [[ $name == JIM* ]] 
             then              
               value=${line#*=}
-              jimVarList+="$value"
+              jimVarList+="${value}"
               echo "V: $value"
               echo "N: $name"
             fi
           done
-          echo "$jimVarList"
+          echo $jimVarList
