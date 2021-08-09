@@ -37,7 +37,8 @@ jobs:
             if [[ $name == JIM* ]] 
             then              
               value=${line#*=}
+              eval echo $value
               echo "_$name=$value"
             fi
           done)
-          eval echo $jim_var_list
+          echo $jim_var_list
