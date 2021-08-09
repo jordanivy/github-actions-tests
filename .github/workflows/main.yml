@@ -33,17 +33,17 @@ jobs:
           env | while IFS= read -r line; do
             name=${line%%=*}
             if [[ $name == JIM* ]] 
-            then
-              value=${line#*=}
-              echo "V: $value"
-              echo "N: $name"
-            fi
-            if [[ $name == JOR* ]]
-            then
-              value=${line#*=}
-              echo "V: $value"
-              echo "N: $name"
-          done
+              then
+                value=${line#*=}
+                echo "V: $value"
+                echo "N: $name"
+              fi
+              if [[ $name == JOR* ]]
+              then
+                value=${line#*=}
+                echo "V: $value"
+                echo "N: $name"
+            done
 #          echo $stringList
 #          for e in $env
 #          do
