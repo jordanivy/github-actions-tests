@@ -30,13 +30,12 @@ jobs:
 
       - name: Echo Envs
         run: |
-          jim_var_list=$(env | while IFS= read -r line; do
+          jim_var_list=""
+          env | while IFS= read -r line; do
             name=${line%%=*}
             if [[ $name == JIM* ]] 
             then              
               value=${line#*=}
-              echo "_$name"
-              echo "V: $value"
+              echo "_$name=$value\n"
             fi
-          done)
-          echo "$jim_var_list"
+          done
