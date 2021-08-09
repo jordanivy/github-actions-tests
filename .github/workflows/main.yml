@@ -47,7 +47,7 @@ jobs:
               echo "V: $value"
               echo "N: $name"
           done
-          echo $stringList
+#          echo $stringList
 #          for e in $env
 #          do
 #            echo "test $e"
