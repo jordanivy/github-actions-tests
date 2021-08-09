@@ -35,18 +35,18 @@ jobs:
             name=${line%%=*}
             if [[ $name == JIM* ]] 
             then
-              stringList+="_$name=${line#*=}"
               value=${line#*=}
+              stringList+=$value
               echo "V: $value"
               echo "N: $name"
             fi
             if [[ $name == JOR* ]]
             then
-              stringList+="_$name=${line#*=}"
               value=${line#*=}
               echo "V: $value"
               echo "N: $name"
           done
+          echo $stringList
 #          echo $stringList
 #          for e in $env
 #          do
