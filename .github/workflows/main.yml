@@ -41,4 +41,4 @@ jobs:
               echo "N: $name"
             fi
           done
-          echo $jimVarList
+          echo $jim_var_list
