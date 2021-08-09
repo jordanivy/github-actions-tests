@@ -42,4 +42,4 @@ jobs:
             fi
           done
           
-          echo "$jim_var_list"
+          echo "testing $jim_var_list"
