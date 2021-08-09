@@ -39,7 +39,8 @@ jobs:
               jim_var_list+="_${name} = ${value}"
               echo "V: $value"
               echo "N: $name"
+              echo "test_env=$jim_var_list" >> $GITHUB_ENV
             fi
           done
           
-          echo "testing $jim_var_list"
+          echo "$test_env"
