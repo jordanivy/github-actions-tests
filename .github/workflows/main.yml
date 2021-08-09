@@ -31,10 +31,13 @@ jobs:
       - name: Echo Envs
         run: |
           env | while IFS= read -r line; do
-            value=${line#*=}
             name=${line%%=*}
-            echo "V: $value"
-            echo "N: $name"
+            if (echo $name | cut -c1-3) == "JIM"
+            then
+              value=${line#*=}
+              echo "V: $value"
+              echo "N: $name"
+            fi
           done
 #          for e in $env
 #          do
