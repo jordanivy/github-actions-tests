@@ -43,4 +43,4 @@ jobs:
             fi
           done
           
-          echo $test_env
+          echo "${{ env.test_env }}"
