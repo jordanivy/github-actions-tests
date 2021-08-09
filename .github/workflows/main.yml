@@ -30,8 +30,14 @@ jobs:
 
       - name: Echo Envs
         run: |
-          values=$(${{toJSON(env)}} | jq '.[]')
-          echo $values
+          if [ -f .env ]
+          then
+            export $(cat .env | sed 's/#.*//g' | xargs)
+          fi
+          printenv
+          
+#          values=$(${{toJSON(env)}})
+#          echo $values
 #          for var in $($vars
 #          do 
 #            vars+="_$env" 
