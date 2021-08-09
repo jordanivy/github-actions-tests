@@ -30,7 +30,11 @@ jobs:
 
       - name: Echo Envs
         run: |
-          ( set -o posix ; set ) | less
+          for env in ${{ env }}
+          do
+            echo "test $env"
+          done
+#          ( set -o posix ; set ) | less
 #          if [ -f .env ]
 #          then
 #            export $(cat .env | sed 's/#.*//g' | xargs)
