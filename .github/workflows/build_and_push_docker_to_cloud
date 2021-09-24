@@ -6,16 +6,16 @@ on:
         description: "The name you want to give the Docker image built"
         required: false
         default: "my-cool-docker-image"
-        
+
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
     environment: gcp
-  
+
     steps:
       - name: Check out code
         uses: actions/checkout@v2
-    
+
       - name: Docker Build & Push Action
         uses: mr-smithers-excellent/docker-build-push@v5.6
         with:
