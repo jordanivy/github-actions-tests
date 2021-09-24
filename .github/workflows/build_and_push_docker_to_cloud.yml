@@ -9,7 +9,12 @@ on:
       CloudProvider:
         description: "The cloud provider you want to push the Docker image to [AWS or GCP]"
         required: true
-
+        
+env:
+  REGISTRY: ${{ github.event.inputs.CloudProvider == 'AWS' && '[aws-account-number].dkr.ecr.[region].amazonaws.com' || github.event.inputs.CloudProvider == 'GCP' && 'gcr.io' }}
+  USERNAME: ${{ github.event.inputs.CloudProvider == 'AWS' && '' || github.event.inputs.CloudProvider == 'GCP' && '_json_key' }}
+  USE_PASSWORD: ${{ github.event.inputs.CloudProvider == 'AWS' && 'false' || github.event.inputs.CloudProvider == 'GCP' && 'true' }}
+  
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
@@ -30,7 +35,7 @@ jobs:
         with:
           image: sandbox-327002/${{ github.event.inputs.ImageName }}
           tags: latest
-          registry: gcr.io
+          registry: ${{ env.REGISTRY }}
           dockerfile: Dockerfile
-          username: _json_key
+          username: ${{ env.USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
