@@ -4,9 +4,10 @@ on:
   workflow_dispatch:
         
 jobs:
-  runs-on: ubuntu-latest
-  environment: gcp
-
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    environment: gcp
+  
     steps:
       - name: Docker Build & Push Action
         uses: mr-smithers-excellent/docker-build-push@v5.6
