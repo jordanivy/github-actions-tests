@@ -2,6 +2,11 @@
 name: Build & push Docker image to GCP
 on:
   workflow_dispatch:
+    inputs:
+      ImageName:
+        description: "The name you want to give the Docker image built"
+        required: false
+        default: "my-cool-docker-image"
         
 jobs:
   build-and-push-image:
@@ -15,7 +20,7 @@ jobs:
       - name: Docker Build & Push Action
         uses: mr-smithers-excellent/docker-build-push@v5.6
         with:
-          image: repo/image
+          image: sandbox/${{ github.event.inputs.ImageName }}
           tags: latest
           registry: gcr.io
           dockerfile: Dockerfile
