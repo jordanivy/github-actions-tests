@@ -15,6 +15,6 @@ jobs:
           image: repo/image
           tags: latest
           registry: gcr.io
-          dockerfile: ./Dockerfile
+          dockerfile: Dockerfile
           username: _json_key
           password: ${{ secrets.DOCKER_PASSWORD }}
