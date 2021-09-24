@@ -11,9 +11,10 @@ on:
         required: true
         
 env:
-  REGISTRY: ${{ github.event.inputs.CloudProvider == 'AWS' && '[aws-account-number].dkr.ecr.[region].amazonaws.com' || github.event.inputs.CloudProvider == 'GCP' && 'gcr.io' }}
+  REGISTRY: ${{ github.event.inputs.CloudProvider == 'AWS' && 'public.ecr.aws/i4o4z3v2/sandbox' || github.event.inputs.CloudProvider == 'GCP' && 'gcr.io' }}
   USERNAME: ${{ github.event.inputs.CloudProvider == 'AWS' && '' || github.event.inputs.CloudProvider == 'GCP' && '_json_key' }}
   USE_PASSWORD: ${{ github.event.inputs.CloudProvider == 'AWS' && 'false' || github.event.inputs.CloudProvider == 'GCP' && 'true' }}
+  GCP_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
   
 jobs:
   build-and-push-image:
@@ -38,4 +39,4 @@ jobs:
           registry: ${{ env.REGISTRY }}
           dockerfile: Dockerfile
           username: ${{ env.USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ env.USE_PASSWORD == true && env.GCP_PASSWORD || '' }}
