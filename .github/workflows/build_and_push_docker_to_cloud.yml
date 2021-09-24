@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Validate input
-        if: ${{ github.event.inputs.CloudProvider != 'AWS' }} && ${{ github.event.inputs.CloudProvider != 'GCP' }}
+        if: github.event.inputs.CloudProvider != 'AWS' && github.event.inputs.CloudProvider != 'GCP'
         run: |
           echo "Error! Please choose either AWS or GCP as the cloud provider."
           exit 1
