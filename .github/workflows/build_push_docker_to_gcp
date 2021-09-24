@@ -1,0 +1,19 @@
+
+name: Build & push Docker image to GCP
+on:
+  workflow_dispatch:
+        
+jobs:
+  runs-on: ubuntu-latest
+  environment: gcp
+
+    steps:
+      - name: Docker Build & Push Action
+        uses: mr-smithers-excellent/docker-build-push@v5.6
+        with:
+          image: repo/image
+          tags: latest
+          registry: gcr.io
+          dockerfile: ../../Dockerfile
+          username: _json_key
+          password: ${{ secrets.DOCKER_PASSWORD }}
