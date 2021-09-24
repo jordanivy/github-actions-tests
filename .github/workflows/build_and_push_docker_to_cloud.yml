@@ -37,7 +37,7 @@ jobs:
       - name: Docker Build & Push Action
         uses: mr-smithers-excellent/docker-build-push@v5.6
         with:
-          image: ${{ env.REPO }}${{ github.event.inputs.ImageName }}
+          image: "${{ env.REPO }}${{ github.event.inputs.ImageName }}"
           tags: latest
           registry: ${{ env.REGISTRY }}
           dockerfile: Dockerfile
