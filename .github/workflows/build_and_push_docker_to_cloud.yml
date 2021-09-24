@@ -1,11 +1,11 @@
 name: Build & push Docker image to GCP
 on:
   workflow_dispatch:
-#    inputs:
-#      ImageName:
-#        description: "The name you want to give the Docker image built"
-#        required: false
-#        default: "my-cool-docker-image"
+    inputs:
+      ImageName:
+        description: "The name you want to give the Docker image built"
+        required: false
+        default: "my-cool-docker-image"
 
 jobs:
   build-and-push-image:
