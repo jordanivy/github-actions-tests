@@ -15,6 +15,9 @@ env:
   USERNAME: ${{ github.event.inputs.CloudProvider == 'AWS' && '' || github.event.inputs.CloudProvider == 'GCP' && '_json_key' }}
   USE_PASSWORD: ${{ github.event.inputs.CloudProvider == 'AWS' && 'false' || github.event.inputs.CloudProvider == 'GCP' && 'true' }}
   GCP_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  REPO: ${{ github.event.inputs.CloudProvider == 'AWS' && '' || github.event.inputs.CloudProvider == 'GCP' && 'sandbox-327002/' }}
   
 jobs:
   build-and-push-image:
@@ -34,7 +37,7 @@ jobs:
       - name: Docker Build & Push Action
         uses: mr-smithers-excellent/docker-build-push@v5.6
         with:
-          image: sandbox-327002/${{ github.event.inputs.ImageName }}
+          image: ${{ env.REPO }}${{ github.event.inputs.ImageName }}
           tags: latest
           registry: ${{ env.REGISTRY }}
           dockerfile: Dockerfile
