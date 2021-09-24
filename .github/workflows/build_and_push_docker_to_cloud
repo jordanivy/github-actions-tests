@@ -1,4 +1,3 @@
-
 name: Build & push Docker image to GCP
 on:
   workflow_dispatch:
