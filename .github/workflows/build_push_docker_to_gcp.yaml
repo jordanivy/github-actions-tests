@@ -9,6 +9,9 @@ jobs:
     environment: gcp
   
     steps:
+      - name: Check out code
+      - uses: actions/checkout@v2
+    
       - name: Docker Build & Push Action
         uses: mr-smithers-excellent/docker-build-push@v5.6
         with:
