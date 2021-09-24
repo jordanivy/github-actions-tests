@@ -13,7 +13,7 @@ on:
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
-    environment: gcp
+    environment: ${{ github.event.inputs.CloudProvider }}
 
     steps:
       - name: Validate input
